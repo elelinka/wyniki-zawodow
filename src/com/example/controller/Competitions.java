@@ -11,23 +11,19 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Competitions {
-    public static final String STOP = "stop";
-
     public static void play(String path) throws IOException {
         Player player;
         List<Player> playerList = new LinkedList<>();
         String result;
         do {
             result = getResult().toLowerCase();
-            switch (result) {
-                case STOP:
-                    break;
-                default:
-                    player = getPlayer(Integer.parseInt(result));
-                    playerList.add(player);
-                    break;
+            if (!("stop".equals(result))) {
+                player = getPlayer(Integer.parseInt(result));
+                playerList.add(player);
+            } else {
+                break;
             }
-        } while (!("stop".equals(result)));
+        } while (true);
 
         Collections.sort(playerList);
         writeResult(playerList, path);
