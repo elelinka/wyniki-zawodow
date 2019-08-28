@@ -14,17 +14,13 @@ public class Competitions {
     public static void play(String path) throws IOException {
         Player player;
         List<Player> playerList = new LinkedList<>();
-        String result;
-        do {
-            result = getResult().toLowerCase();
-            if (!("stop".equals(result))) {
-                player = getPlayer(Integer.parseInt(result));
-                playerList.add(player);
-            } else {
-                break;
-            }
-        } while (true);
+        String result = getResult().toLowerCase();
 
+        while (!("stop".equals(result))) {
+            player = getPlayer(Integer.parseInt(result));
+            playerList.add(player);
+            result = getResult().toLowerCase();
+        }
         Collections.sort(playerList);
         writeResult(playerList, path);
         System.out.println("Dane posortowano i zapisano do pliku stats.csv.");

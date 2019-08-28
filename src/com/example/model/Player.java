@@ -48,8 +48,12 @@ public class Player implements Comparable<Player> {
     public int compareTo(Player o) {
         if (this.result > o.result) {
             return 1;
-        } else if (this.result == o.result) {
-            return 0;
+        }
+        if (this.lastName.compareToIgnoreCase(o.lastName) > 0) {
+            return 1;
+        }
+        if (this.firstName.compareToIgnoreCase(o.firstName) > 0) {
+            return 1;
         } else {
             return -1;
         }
